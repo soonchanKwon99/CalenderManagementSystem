@@ -29,6 +29,9 @@ public class MenuManager {
 			else if (num == 4) {
 				viewSchedule();
 			}
+			else if (num == 6) {
+				System.out.println("Exit the Program");
+			}
 		}
 	}
 	public static void addSchedule() {
