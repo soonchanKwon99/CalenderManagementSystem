@@ -1,9 +1,9 @@
-package Schedule;
+  package Schedule;
 
 import java.util.Scanner;
 
 public class Schedule {
-	protected ScheduleKind kind = ScheduleKind.TimeSchedule;
+	protected ScheduleType type = ScheduleType.TimeSchedule;
 	protected String name;
 	protected String date;
 	protected int time;
@@ -12,23 +12,36 @@ public class Schedule {
 	public Schedule() {
 	}
 	
-	public Schedule(String name) {
+	public Schedule(ScheduleType type) {
+		this.type = type;
+	}
+	
+	public Schedule(String name, String date) {
 		this.name = name;
+		this.date = date;
 	}
 	
 	public Schedule(String name, String date, int time, String location) {
 		this.name = name;
 		this.date = date;
 		this.time = time;
-		this.location = location;
+		this.location = location;	
 	}
 	
-	public ScheduleKind getKind() {
-		return kind;
+	public Schedule(ScheduleType type, String name, String date, int time, String location) {
+		this.type = type;
+		this.name = name;
+		this.date = date;
+		this.time = time;
+		this.location = location;
+	}	
+	
+	public ScheduleType getType() {
+		return type;
 	}
 
-	public void setKind(ScheduleKind kind) {
-		this.kind = kind;
+	public void setType(ScheduleType type) {
+		this.type = type;
 	}
 
 	public String getName() {
@@ -64,7 +77,20 @@ public class Schedule {
 	}
 	
 	public void printInfo() {
-		System.out.println("***Schedule Searched*** \nName: " +this.name + "\nDate: " +this.date + "\nTime: " +this.time + "\nLocation: " +this.location);
+		String type = "none";
+		switch(this.type) {
+		case AllDaySchedule:
+			type = "Whole Day Schedule";
+			break;
+		case TimeSchedule:
+			type = "Time Schedule";
+			break;
+		case AnnualHoliday:
+			type = "Anniversary";
+			break;
+		default:
+		}
+		System.out.println("***Schedule Searched***" + "\nType: " + type + "\nName: " +this.name + "\nDate: " +this.date + "\nTime: " +this.time + "\nLocation: " +this.location);
 	}
 
 	public void getUserInput(Scanner input) {
@@ -72,11 +98,11 @@ public class Schedule {
 		String name = input.next();
 		this.setName(name);
 		
-		System.out.print("Schedule Date:");
+		System.out.print("Schedule Date (ex: 20MAR21):");
 		String date = input.next();
 		this.setDate(date);
 		
-		System.out.print("Schedule Time:");
+		System.out.print("Schedule Time (ex: 2400):");
 		int time = input.nextInt();
 		this.setTime(time);
 		

@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Schedule.DailySchedule;
+import Schedule.AllDaySchedule;
+import Schedule.AnnualHoliday;
 import Schedule.Schedule;
+import Schedule.ScheduleType;
 
 public class CalendarManager {
 	ArrayList<Schedule> schedules  = new ArrayList<Schedule>();
@@ -12,27 +14,34 @@ public class CalendarManager {
 	}
 	
 	public void addSchedule() {
-		int Kind = 0;
+		int Type = 0;
 		Schedule schedule;
-		while (Kind != 1 && Kind != 2) {
-			System.out.print("1 for Daily Schedule");
-			System.out.print("\n2 for Time Schedule");
-			System.out.print("\nSelect the number for Schedule Kind between 1 and 2:");
-			Kind = input.nextInt();
-			if (Kind == 1) {
-				schedule = new DailySchedule();
+		while (Type != 1 && Type != 2) {
+			System.out.println("1 for Time Schedule");
+			System.out.println("2 for All Day Schedule");
+			System.out.println("3 for Annual Holiday Schedule");
+			System.out.println("Select the number for Schedule Type between 1 and 3:");
+			Type = input.nextInt();
+			if (Type == 1) {
+				schedule = new Schedule(ScheduleType.TimeSchedule);
 				schedule.getUserInput(input);
 				schedules.add(schedule);
 				break;
 			}
-			else if (Kind == 2) {
-				schedule = new Schedule();
+			else if (Type == 2) {
+				schedule = new AllDaySchedule(ScheduleType.AllDaySchedule);
+				schedule.getUserInput(input);
+				schedules.add(schedule);
+				break;
+			}
+			else if (Type == 3) {
+				schedule = new AnnualHoliday(ScheduleType.AnnualHoliday);
 				schedule.getUserInput(input);
 				schedules.add(schedule);
 				break;
 			}
 			else {
-				System.out.print("Select the number for Schedule Kind:");
+				System.out.print("Select the number for Schedule Type:");
 			}
 		}	
 	}
