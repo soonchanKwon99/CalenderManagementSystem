@@ -2,9 +2,9 @@ package Schedule;
 
 import java.util.Scanner;
 
-public class AllDaySchedule extends Schedule implements ScheduleInput{
-	
-	public AllDaySchedule(ScheduleType type) {
+public class TimeSchedule extends Schedule implements ScheduleInput{
+
+	public TimeSchedule(ScheduleType type) {
 		super.type = type;
 	}
 	
@@ -16,11 +16,15 @@ public class AllDaySchedule extends Schedule implements ScheduleInput{
 		System.out.print("Schedule Date (ex: 20MAR21):");
 		String date = input.next();
 		this.setDate(date);
-			
+		
+		System.out.print("Schedule Time (ex: 2400):");
+		int time = input.nextInt();
+		this.setTime(time);
+		
 		System.out.print("Schedule Location:");
 		String location = input.next();
 		this.setLocation(location);
-		}
+	}
 	
 	public void printInfo() {
 		String type = "none";
@@ -39,4 +43,5 @@ public class AllDaySchedule extends Schedule implements ScheduleInput{
 		System.out.println("***Schedule Searched***" + "\nType: " + type + "\nName: " +this.name + "\nDate: " +this.date + "\nTime: " +this.time + "\nLocation: " +this.location);
 	}
 
+	
 }

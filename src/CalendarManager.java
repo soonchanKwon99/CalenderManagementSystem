@@ -4,10 +4,12 @@ import java.util.Scanner;
 import Schedule.AllDaySchedule;
 import Schedule.AnnualHoliday;
 import Schedule.Schedule;
+import Schedule.ScheduleInput;
 import Schedule.ScheduleType;
+import Schedule.TimeSchedule;
 
 public class CalendarManager {
-	ArrayList<Schedule> schedules  = new ArrayList<Schedule>();
+	ArrayList<ScheduleInput> schedules  = new ArrayList<ScheduleInput>();
 	Scanner input;
 	CalendarManager(Scanner input) {
 		this.input = input;
@@ -15,7 +17,7 @@ public class CalendarManager {
 	
 	public void addSchedule() {
 		int Type = 0;
-		Schedule schedule;
+		ScheduleInput scheduleInput;
 		while (Type != 1 && Type != 2) {
 			System.out.println("1 for Time Schedule");
 			System.out.println("2 for All Day Schedule");
@@ -23,21 +25,21 @@ public class CalendarManager {
 			System.out.println("Select the number for Schedule Type between 1 and 3:");
 			Type = input.nextInt();
 			if (Type == 1) {
-				schedule = new Schedule(ScheduleType.TimeSchedule);
-				schedule.getUserInput(input);
-				schedules.add(schedule);
+				scheduleInput = new TimeSchedule(ScheduleType.TimeSchedule);
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);
 				break;
 			}
 			else if (Type == 2) {
-				schedule = new AllDaySchedule(ScheduleType.AllDaySchedule);
-				schedule.getUserInput(input);
-				schedules.add(schedule);
+				scheduleInput = new AllDaySchedule(ScheduleType.AllDaySchedule);
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);
 				break;
 			}
 			else if (Type == 3) {
-				schedule = new AnnualHoliday(ScheduleType.AnnualHoliday);
-				schedule.getUserInput(input);
-				schedules.add(schedule);
+				scheduleInput = new AnnualHoliday(ScheduleType.AnnualHoliday);
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);
 				break;
 			}
 			else {
@@ -72,8 +74,8 @@ public class CalendarManager {
 		System.out.print("Schedule Name:");
 		String ScheName = input.next();
 		for (int i = 0; i < schedules.size(); i++) {
-			Schedule schedule = schedules.get(i);
-			if (schedule.getName().equals(ScheName)) {
+			ScheduleInput scheduleInput = schedules.get(i);
+			if (scheduleInput.getName().equals(ScheName)) {
 				int num = -1;
 				while (num!= 5) {
 					System.out.println("***Schedule Info Edit Menu***");
@@ -87,22 +89,22 @@ public class CalendarManager {
 					if (num == 1) {
 						System.out.print("Schedule Name:");
 						String name = input.next();
-						schedule.setName(name);
+						scheduleInput.setName(name);
 					}	
 					else if (num == 2) {
 						System.out.print("Schedule Date:");
 						String date = input.next();
-						schedule.setDate(date);
+						scheduleInput.setDate(date);
 					}
 					else if (num == 3) {
 						System.out.print("Schedule Time:");
 						int time = input.nextInt();
-						schedule.setTime(time);
+						scheduleInput.setTime(time);
 					}
 					else if (num == 4) {
 						System.out.print("Schedule Location:");
 						String location = input.next();
-						schedule.setLocation(location);
+						scheduleInput.setLocation(location);
 					}
 					else {
 						continue;				

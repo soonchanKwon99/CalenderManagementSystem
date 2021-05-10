@@ -2,7 +2,7 @@ package Schedule;
 
 import java.util.Scanner;
 
-public class AnnualHoliday extends Schedule {
+public class AnnualHoliday extends Schedule implements ScheduleInput{
 		
 	protected String HolidayName;
 	protected String HolidayDate;

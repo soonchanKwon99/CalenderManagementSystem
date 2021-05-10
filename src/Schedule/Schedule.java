@@ -1,8 +1,8 @@
-  package Schedule;
+package Schedule;
 
 import java.util.Scanner;
 
-public class Schedule {
+public abstract class Schedule {
 	protected ScheduleType type = ScheduleType.TimeSchedule;
 	protected String name;
 	protected String date;
@@ -76,40 +76,5 @@ public class Schedule {
 		this.location = location;
 	}
 	
-	public void printInfo() {
-		String type = "none";
-		switch(this.type) {
-		case AllDaySchedule:
-			type = "Whole Day Schedule";
-			break;
-		case TimeSchedule:
-			type = "Time Schedule";
-			break;
-		case AnnualHoliday:
-			type = "Anniversary";
-			break;
-		default:
-		}
-		System.out.println("***Schedule Searched***" + "\nType: " + type + "\nName: " +this.name + "\nDate: " +this.date + "\nTime: " +this.time + "\nLocation: " +this.location);
-	}
-
-	public void getUserInput(Scanner input) {
-		System.out.print("Schedule Name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Schedule Date (ex: 20MAR21):");
-		String date = input.next();
-		this.setDate(date);
-		
-		System.out.print("Schedule Time (ex: 2400):");
-		int time = input.nextInt();
-		this.setTime(time);
-		
-		System.out.print("Schedule Location:");
-		String location = input.next();
-		this.setLocation(location);
-	}
-	
-
+	public abstract void printInfo();
 }
