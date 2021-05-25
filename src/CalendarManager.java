@@ -1,17 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Schedule.AllDaySchedule;
 import Schedule.AnnualHoliday;
-import Schedule.Schedule;
 import Schedule.ScheduleInput;
 import Schedule.ScheduleType;
 import Schedule.TimeSchedule;
 
-public class CalendarManager {
+public class CalendarManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 986863961563611926L;
+	
 	ArrayList<ScheduleInput> schedules  = new ArrayList<ScheduleInput>();
-	Scanner input;
+	transient  Scanner input;
 	CalendarManager(Scanner input) {
 		this.input = input;
 	}

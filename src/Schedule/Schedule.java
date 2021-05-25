@@ -1,10 +1,16 @@
 package Schedule;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.DateFormatException;
 
-public abstract class Schedule implements ScheduleInput {
+public abstract class Schedule implements ScheduleInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3505881217770670612L;
+	
 	protected ScheduleType type = ScheduleType.TimeSchedule;
 	protected String name;
 	protected String date;
