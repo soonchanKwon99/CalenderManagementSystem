@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,6 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Log.EventLogger;
+import gui.WindowFrame;
 
 public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt"); 
@@ -18,8 +20,8 @@ public class MenuManager {
 		if (calendarManager == null) {
 			calendarManager = new CalendarManager(input);
 		}
-		
-		
+
+		WindowFrame frame = new WindowFrame(calendarManager);
 		selectMenu(input, calendarManager);
 		putObject(calendarManager, "calendarmanager.ser");
 	}
@@ -77,9 +79,12 @@ public class MenuManager {
 	
 	public static CalendarManager getObject(String filename) {
 		CalendarManager calendarManager = null;
+		
+		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
+			
 			calendarManager = (CalendarManager) in.readObject();
 
 			in.close();

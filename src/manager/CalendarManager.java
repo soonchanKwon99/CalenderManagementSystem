@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +6,7 @@ import java.util.Scanner;
 
 import Schedule.AllDaySchedule;
 import Schedule.AnnualHoliday;
+import Schedule.Schedule;
 import Schedule.ScheduleInput;
 import Schedule.ScheduleType;
 import Schedule.TimeSchedule;
@@ -138,6 +140,14 @@ public class CalendarManager implements Serializable{
 		for (int i = 0; i < schedules.size(); i++) {
 			schedules.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return schedules.size();
+	}
+	
+	public ScheduleInput get(int index) {
+		return (Schedule) schedules.get(index);
 	}
 
 	

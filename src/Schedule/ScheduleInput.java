@@ -10,9 +10,15 @@ public interface ScheduleInput {
 	
 	public void setName(String name);
 	
+	public String getDate();
+	
 	public void setDate(String date) throws DateFormatException;
+	
+	public int getTime();
 	   
 	public void setTime(int time);
+	
+	public String getLocation();
 	 
 	public void setLocation(String location);
 	
