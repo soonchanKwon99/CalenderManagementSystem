@@ -17,11 +17,13 @@ public class ScheduleViewer extends JPanel {
 	
 	CalendarManager calendarManager;
 
-	public ScheduleViewer(WindowFrame frame, CalendarManager calendarManager) {
-		this.frame = frame;
+	public CalendarManager getCalendarManager() {
+		return calendarManager;
+	}
+
+	public void setCalendarManager(CalendarManager calendarManager) {
 		this.calendarManager = calendarManager;
-		
-		System.out.println("***" + calendarManager.size() + "***");
+		this.removeAll();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("NAME");
@@ -43,6 +45,14 @@ public class ScheduleViewer extends JPanel {
 		JScrollPane sp = new JScrollPane(table);
 
 		this.add(sp);
+	}
+
+	public ScheduleViewer(WindowFrame frame, CalendarManager calendarManager) {
+		this.frame = frame;
+		this.calendarManager = calendarManager;
+		
+		System.out.println("***" + calendarManager.size() + "***");
+		
 	}
 
 }

@@ -7,12 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listener.ScheduleAdderCancelListener;
+import listener.ScheduleAdderListener;
+import manager.CalendarManager;
+
 public class ScheduleAdder extends JPanel{
 	
 	WindowFrame frame;
 	
-	public ScheduleAdder(WindowFrame frame) {
+	CalendarManager calendarManager;
+	
+	public ScheduleAdder(WindowFrame frame, CalendarManager calendarManager) {
 		this.frame = frame;
+		this.calendarManager = calendarManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -41,8 +48,14 @@ public class ScheduleAdder extends JPanel{
 		panel.add(labelLocation);
 		panel.add(fieldLocation);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("Cancel"));
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new ScheduleAdderListener(fieldName, fieldDate, fieldTime, fieldLocation, calendarManager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new ScheduleAdderCancelListener(frame));
+		
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 

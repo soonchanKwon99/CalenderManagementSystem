@@ -21,7 +21,7 @@ public class WindowFrame extends JFrame {
 		
 		this.calendarManager = calendarManager; 
 		menuselection = new MenuSelection(this);
-		scheduleadder = new ScheduleAdder(this);
+		scheduleadder = new ScheduleAdder(this, this.calendarManager);
 		scheduleviewer  = new ScheduleViewer(this, this.calendarManager);
 
 		this.add(menuselection);

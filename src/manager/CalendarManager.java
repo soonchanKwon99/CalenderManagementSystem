@@ -23,6 +23,16 @@ public class CalendarManager implements Serializable{
 		this.input = input;
 	}
 	
+	public void addSchedule(String name, String date, String time, String location) {
+		ScheduleInput scheduleInput = new TimeSchedule(ScheduleType.TimeSchedule);
+		scheduleInput.getUserInput(input);
+		schedules.add(scheduleInput);
+	}
+	
+	public void addSchedule(ScheduleInput scheduleInput) {
+		schedules.add(scheduleInput);
+	}
+	
 	public void addSchedule() {
 		int Type = 0;
 		ScheduleInput scheduleInput;

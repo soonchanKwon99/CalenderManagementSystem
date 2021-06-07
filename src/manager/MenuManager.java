@@ -79,8 +79,6 @@ public class MenuManager {
 	
 	public static CalendarManager getObject(String filename) {
 		CalendarManager calendarManager = null;
-		
-		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
@@ -98,9 +96,7 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return calendarManager;
-		
 	}
 	
 	public static void putObject(CalendarManager calendarManager, String filename) {
